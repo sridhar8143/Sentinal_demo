@@ -18,23 +18,23 @@ provider "azurerm" {
 
 # Create a resource group
 
-resource "azurerm_resource_group" "Sridhar_march1" {
+resource "azurerm_resource_group" "Sri_first" {
   name     = "example-resources"
   location = "West Europe"
 }
 
-resource "azurerm_storage_account" "example" {
-  name                     = "Sridhar_tcs12345"
-  resource_group_name      = azurerm_resource_group.example.name
-  location                 = azurerm_resource_group.example.location
+resource "azurerm_storage_account" "Sridhar_second" {
+  name                     = "examplesa"
+  resource_group_name      = aroup.Sri_first.name
+  location                 = azurerm_resource_group.Sri_firzurerm_resource_gst.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
 
-resource "azurerm_mssql_server" "new_policy_check123456" {
+resource "azurerm_mssql_server" "new_policy_check" {
   name                         = "example-sqlserver"
-  resource_group_name          = azurerm_resource_group.example.name
-  location                     = azurerm_resource_group.example.location
+  resource_group_name          = azurerm_resource_group.Sri_first.name
+  location                     = azurerm_resource_group.Sri_first.location
   version                      = "12.0"
   administrator_login          = "4dm1n157r470r"
   administrator_login_password = "4-v3ry-53cr37-p455w0rd"
@@ -42,7 +42,7 @@ resource "azurerm_mssql_server" "new_policy_check123456" {
 
 resource "azurerm_mssql_database" "policy_check_test" {
   name           = "acctest-db-d"
-  server_id      = azurerm_mssql_server.example.id
+  server_id      = azurerm_mssql_server.Sri_first.id
   collation      = "SQL_Latin1_General_CP1_CI_AS"
   license_type   = "LicenseIncluded"
   max_size_gb    = 4
