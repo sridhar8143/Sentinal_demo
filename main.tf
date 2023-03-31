@@ -25,8 +25,8 @@ resource "azurerm_resource_group" "Sri_first" {
 
 resource "azurerm_storage_account" "Sridhar_second" {
   name                     = "examplesa"
-  resource_group_name      = aroup.Sri_first.name
-  location                 = azurerm_resource_group.Sri_firzurerm_resource_gst.location
+  resource_group_name      = azurerm_resource_group.Sri_first.name
+  location                 = azurerm_resource_group.Sri_first.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
@@ -42,7 +42,7 @@ resource "azurerm_mssql_server" "new_policy_check" {
 
 resource "azurerm_mssql_database" "policy_check_test" {
   name           = "acctest-db-d"
-  server_id      = azurerm_mssql_server.Sri_first.id
+  server_id      = azurerm_mssql_server.new_policy_check.id
   collation      = "SQL_Latin1_General_CP1_CI_AS"
   license_type   = "LicenseIncluded"
   max_size_gb    = 4
